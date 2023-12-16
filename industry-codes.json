@@ -1,0 +1,92 @@
+[
+  {
+    "id": "22000000000",
+    "value": "Apparel \u0026 Accessories",
+    "label": "label_22000000000"
+  },
+  {
+    "id": "12000000000",
+    "value": "Baby, Kids \u0026 Maternity",
+    "label": "label_12000000000"
+  },
+  {
+    "id": "14000000000",
+    "value": "Beauty \u0026 Personal Care",
+    "label": "label_14000000000"
+  },
+  {
+    "id": "24000000000",
+    "value": "Business Services",
+    "label": "label_24000000000"
+  },
+  {
+    "id": "10000000000",
+    "value": "Education",
+    "label": "label_10000000000"
+  },
+  {
+    "id": "13000000000",
+    "value": "Financial Services",
+    "label": "label_13000000000"
+  },
+  {
+    "id": "27000000000",
+    "value": "Food \u0026 Beverage",
+    "label": "label_27000000000"
+  },
+  {
+    "id": "25000000000",
+    "value": "Games",
+    "label": "label_25000000000"
+  },
+  {
+    "id": "29000000000",
+    "value": "Health",
+    "label": "label_29000000000"
+  },
+  {
+    "id": "21000000000",
+    "value": "Home Improvement",
+    "label": "label_21000000000"
+  },
+  {
+    "id": "18000000000",
+    "value": "Household Products",
+    "label": "label_18000000000"
+  },
+  {
+    "id": "26000000000",
+    "value": "Life Services",
+    "label": "label_26000000000"
+  },
+  {
+    "id": "23000000000",
+    "value": "News \u0026 Entertainment",
+    "label": "label_23000000000"
+  },
+  {
+    "id": "19000000000",
+    "value": "Pets",
+    "label": "label_19000000000"
+  },
+  {
+    "id": "28000000000",
+    "value": "Sports \u0026 Outdoor",
+    "label": "label_28000000000"
+  },
+  {
+    "id": "15000000000",
+    "value": "Tech \u0026 Electronics",
+    "label": "label_15000000000"
+  },
+  {
+    "id": "17000000000",
+    "value": "Travel",
+    "label": "label_17000000000"
+  },
+  {
+    "id": "11000000000",
+    "value": "Vehicle \u0026 Transportation",
+    "label": "label_11000000000"
+  }
+]
