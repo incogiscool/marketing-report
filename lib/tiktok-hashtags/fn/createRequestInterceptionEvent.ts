@@ -14,8 +14,6 @@ export function createRequestInterceptionEvent(
     keyword ? `&keyword=${keyword}` : ""
   }`;
 
-  console.log(interceptLink);
-
   page.on("request", (request) => {
     if (
       request

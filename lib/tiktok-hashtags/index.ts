@@ -1,22 +1,31 @@
 import puppeteer, { Browser } from "puppeteer";
 import {
   tiktokPageLink,
-  industryCode,
-  reigonCode,
   period,
   resultAmount,
   keyword,
+  reigon,
+  industry,
 } from "../../config";
 import { waitForInterceptedRequest } from "./fn/waitForInterceptedRequest";
 import { createRequestInterceptionEvent } from "./fn/createRequestInterceptionEvent";
+import { getReigonCode } from "./fn/getReigonCode";
+import { getIndustryCode } from "./fn/getIndustryCode";
 
 export const scrapeTikTokHashtags = async () => {
   let browser: Browser | null = null;
 
   try {
+    // browser = await puppeteer.launch({
+    //   headless: false,
+    // });
+
     browser = await puppeteer.launch({
-      headless: false,
+      headless: true,
     });
+
+    const reigonCode = getReigonCode(reigon, "./country-codes.json");
+    const industryCode = getIndustryCode(industry, "./industry-codes.json");
 
     const page = await browser.newPage();
     page.setDefaultNavigationTimeout(30 * 1000);
