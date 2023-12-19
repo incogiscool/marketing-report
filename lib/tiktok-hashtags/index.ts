@@ -21,7 +21,7 @@ export const scrapeTikTokHashtags = async () => {
     // });
 
     browser = await puppeteer.launch({
-      headless: true,
+      headless: false,
     });
 
     const reigonCode = getReigonCode(reigon, "./country-codes.json");
@@ -33,7 +33,7 @@ export const scrapeTikTokHashtags = async () => {
     await page.goto(tiktokPageLink);
     await page.setRequestInterception(true);
 
-    console.log("intercepting");
+    console.log("intercepting request");
     createRequestInterceptionEvent(
       page,
       reigonCode,
@@ -42,9 +42,12 @@ export const scrapeTikTokHashtags = async () => {
       keyword,
       industryCode
     );
+    console.log("intercepted request");
 
     console.log("waiting for response");
     const res = await waitForInterceptedRequest(page);
+    console.log("recieved response");
+
     const data = (await res.json()).data.list;
 
     return data;
