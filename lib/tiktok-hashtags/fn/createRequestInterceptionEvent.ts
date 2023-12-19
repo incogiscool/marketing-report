@@ -1,10 +1,12 @@
+import { Page } from "puppeteer";
+
 export function createRequestInterceptionEvent(
-  page,
-  industryCode,
-  reigonCode,
-  period,
-  resultAmount,
-  keyword
+  page: Page,
+  reigonCode: number,
+  period: number,
+  resultAmount: number,
+  keyword?: string | null,
+  industryCode?: number | null
 ) {
   const interceptLink = `https://ads.tiktok.com/creative_radar_api/v1/popular_trend/hashtag/list?page=1&limit=${resultAmount}&period=${period}${
     industryCode ? `&industry=${industryCode}` : ""

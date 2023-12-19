@@ -13,10 +13,10 @@ export const industryCodesJSON = fs.readFileSync(
 );
 
 export const reigonCode = JSON.parse(reigonCodesJSON).find(
-  (obj) => obj.Name === reigon
+  (obj: any) => obj.Name === reigon
 ).Code;
 export const industryCode = JSON.parse(industryCodesJSON).find(
-  (obj) => obj.value === (industry || "")
+  (obj: any) => obj.value === (industry || "")
 )?.id;
 
 export const proxyAuth = `${process.env.PROXY_USERNAME}:${process.env.PROXY_PASSWORD}`;

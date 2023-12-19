@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer";
+import puppeteer, { Browser } from "puppeteer";
 import {
   tiktokPageLink,
   industryCode,
@@ -6,12 +6,12 @@ import {
   period,
   resultAmount,
   keyword,
-} from "../../config.js";
-import { waitForInterceptedRequest } from "./fn/waitForInterceptedRequest.js";
-import { createRequestInterceptionEvent } from "./fn/createRequestInterceptionEvent.js";
+} from "../../config";
+import { waitForInterceptedRequest } from "./fn/waitForInterceptedRequest";
+import { createRequestInterceptionEvent } from "./fn/createRequestInterceptionEvent";
 
 export const scrapeTikTokHashtags = async () => {
-  let browser;
+  let browser: Browser | null = null;
 
   try {
     browser = await puppeteer.launch({
@@ -24,15 +24,17 @@ export const scrapeTikTokHashtags = async () => {
     await page.goto(tiktokPageLink);
     await page.setRequestInterception(true);
 
+    console.log("intercepting");
     createRequestInterceptionEvent(
       page,
-      industryCode,
       reigonCode,
       period,
       resultAmount,
-      keyword
+      keyword,
+      industryCode
     );
 
+    console.log("waiting for response");
     const res = await waitForInterceptedRequest(page);
     const data = (await res.json()).data.list;
 
@@ -41,6 +43,7 @@ export const scrapeTikTokHashtags = async () => {
     console.log("scraping failed");
     console.log(e);
   } finally {
+    if (!browser) throw new Error("Browser undefined.");
     await browser.close();
   }
 };
