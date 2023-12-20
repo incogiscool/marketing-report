@@ -1,3 +1,6 @@
+import dotnev from "dotenv";
+dotnev.config();
+
 export const supportedIndustries = [
   "Apparel & Accessories",
   "Baby, Kids & Maternity",
@@ -18,3 +21,14 @@ export const supportedIndustries = [
   "Travel",
   "Vehicle & Transportation",
 ] as const;
+
+export const curatorFunctions = [
+  "create-source",
+  "fetch-source",
+  "fetch-feeds",
+  "fetch-feed-posts",
+  "delete-source",
+] as const;
+export const curatorBaseAPIRoute = "https://api.curator.io/v1";
+
+export const curatorAPIKey = process.env.CURATOR_API_KEY;
