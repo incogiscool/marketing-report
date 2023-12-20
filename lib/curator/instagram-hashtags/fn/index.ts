@@ -1,7 +1,7 @@
-import { createInstagramHashtagSource } from "./instagram-hashtags/fn/createInstagramHashtagSource";
-import { getFeeds } from "./general/getFeeds";
-import { getFeedPosts } from "./general/getFeedPosts";
-import { deleteSource } from "./general/deleteSource";
+import { createInstagramHashtagSource } from "./createInstagramHashtagSource";
+import { getFeeds } from "../../general/getFeeds";
+import { getFeedPosts } from "../../general/getFeedPosts";
+import { deleteSource } from "../../general/deleteSource";
 
 export const getInstagramHashtagPosts = async (hashtag: string) => {
   const feeds = await getFeeds();
