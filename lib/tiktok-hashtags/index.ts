@@ -16,12 +16,8 @@ export const scrapeTikTokHashtags = async () => {
   let browser: Browser | null = null;
 
   try {
-    // browser = await puppeteer.launch({
-    //   headless: false,
-    // });
-
     browser = await puppeteer.launch({
-      headless: false,
+      headless: true,
     });
 
     const reigonCode = getReigonCode(reigon, "./country-codes.json");
@@ -29,6 +25,9 @@ export const scrapeTikTokHashtags = async () => {
 
     const page = await browser.newPage();
     page.setDefaultNavigationTimeout(30 * 1000);
+    await page.setUserAgent(
+      "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36"
+    );
 
     await page.goto(tiktokPageLink);
     await page.setRequestInterception(true);
