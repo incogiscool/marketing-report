@@ -158,3 +158,11 @@ export type CuratorPostResponse = {
   postCount: number;
   posts: CuratorPost[];
 };
+
+export type News = {
+  source: string;
+  title: string;
+  articleLink: string;
+  guid: string;
+  publishedDate: string;
+};

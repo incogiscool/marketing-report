@@ -12,9 +12,13 @@
   "dependencies": {
     "axios": "^1.6.2",
     "dotenv": "^16.3.1",
+    "jsdom": "^23.0.1",
     "openai": "^4.24.0",
     "puppeteer": "^21.6.1",
     "rss-parser": "^3.13.0",
     "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^21.1.6"
   }
 }
