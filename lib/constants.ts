@@ -29,7 +29,10 @@ export const curatorFunctions = [
   "fetch-feed-posts",
   "delete-source",
 ] as const;
+
 export const curatorBaseAPIRoute = "https://api.curator.io/v1";
 
 export const curatorAPIKey = process.env.CURATOR_API_KEY;
 export const openaiApiKey = process.env.OPENAI_API_KEY;
+
+export const googleNewsRSSBaseRoute = "https://news.google.com/rss/search";
