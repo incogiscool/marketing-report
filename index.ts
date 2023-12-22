@@ -2,7 +2,7 @@ import { getInstagramHashtagPosts } from "./lib/curator/instagram-hashtags";
 import { scrapeTikTokHashtags } from "./lib/tiktok-hashtags";
 import { openai } from "./lib/openai";
 import { getGoogleNewsRSSData } from "./lib/news/google-news-rss";
-import { analyzeNews } from "./lib/openai/fn/analyzeNews";
+import { analyzeTop5Articles } from "./lib/openai/fn/analyzeTop5Articles";
 
 (async () => {
   // const hashtags = await scrapeTikTokHashtags();
@@ -24,20 +24,10 @@ import { analyzeNews } from "./lib/openai/fn/analyzeNews";
   //   console.log(post.text);
   // }
 
-  const brand = "starbucks";
+  const brand = "apple";
 
   const news = await getGoogleNewsRSSData(brand);
-  const top5ArticleLinks = news
-    .splice(0, 5)
-    .map((article) => article.articleLink);
-
-  // console.log(top5ArticleLinks);
-
-  const aiRes = await analyzeNews(
-    top5ArticleLinks,
-    brand,
-    "./openai_prompts.json"
-  );
+  const aiRes = await analyzeTop5Articles(news, brand, "./openai_prompts.json");
 
   console.log(aiRes);
 })();

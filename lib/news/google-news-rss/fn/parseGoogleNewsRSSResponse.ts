@@ -1,6 +1,6 @@
 import Parser from "rss-parser";
 import { JSDOM } from "jsdom";
-import { News } from "../../../types";
+import { NewsArticle } from "../../../types";
 
 export const parseGoogleNewsRSSResponse = async (response: string) => {
   const parser = new Parser();
@@ -21,7 +21,7 @@ export const parseGoogleNewsRSSResponse = async (response: string) => {
       guid: article.guid,
       publishedDate: article.pubDate,
       source,
-    } as News;
+    } as NewsArticle;
   });
 
   return obj;

@@ -160,7 +160,7 @@ export type CuratorPostResponse = {
   posts: CuratorPost[];
 };
 
-export type News = {
+export type NewsArticle = {
   source: string;
   title: string;
   articleLink: string;
@@ -182,3 +182,8 @@ export type OpenaiJSONPrompt = {
   system_message: string;
   function_object: ChatCompletionTool | null;
 };
+
+export type AnalyzedNewsArticle = {
+  sentiment: number;
+  summary: string;
+} & NewsArticle;

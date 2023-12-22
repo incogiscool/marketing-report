@@ -1,7 +1,7 @@
 [
   {
-    "function_id": "analyze_news",
-    "system_message": "Given JSON objects about news articles with their links. Open the links, then evaluate each of their sentiments using an integer between 0-10.",
+    "function_id": "analyze_top_5_articles",
+    "system_message": "Given JSON objects about news articles with their links. Open the links, then evaluate each of their sentiments using an integer between 0-10. Also create a quick summary about 50-75 words of each article.",
     "function_object": {
       "type": "function",
       "function": {

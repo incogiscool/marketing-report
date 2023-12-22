@@ -3,23 +3,27 @@ import {
   ChatCompletionTool,
 } from "openai/resources";
 import { openai } from "..";
-import { OpenaiAnalyzeNewsResponse, OpenaiJSONPrompt } from "../../types";
+import {
+  AnalyzedNewsArticle,
+  NewsArticle,
+  OpenaiAnalyzeNewsResponse,
+  OpenaiJSONPrompt,
+} from "../../types";
 import { openaiModel } from "../../../config";
 import fs from "fs";
+import { getJSONPrompt } from "./getJSONPrompt";
 
-export const analyzeNews = async (
-  links: string[],
+export const analyzeTop5Articles = async (
+  articles: NewsArticle[],
   brand: string,
   jsonFilePath: string
 ) => {
-  const promptFunctionId = "analyze_news";
+  const promptFunctionId = "analyze_top_5_articles";
 
-  const json = fs.readFileSync(jsonFilePath, "utf-8");
-  const parsedJSON = JSON.parse(json) as OpenaiJSONPrompt[];
+  const newsPromptsObject = getJSONPrompt(jsonFilePath, promptFunctionId);
 
-  const newsPromptsObject = parsedJSON.find(
-    (obj) => obj.function_id === promptFunctionId
-  );
+  const top5Articles = articles.slice(0, 5);
+  const top5ArticlesLinks = top5Articles.map((article) => article.articleLink);
 
   const messages: ChatCompletionMessageParam[] = [
     {
@@ -32,7 +36,7 @@ export const analyzeNews = async (
     },
     {
       role: "user",
-      content: JSON.stringify(links),
+      content: JSON.stringify(top5ArticlesLinks),
     },
   ];
 
@@ -57,5 +61,15 @@ export const analyzeNews = async (
     responseMessage.tool_calls[0].function.arguments
   ) as OpenaiAnalyzeNewsResponse;
 
-  return functionArguments.evaluated_news;
+  const aiArgumentResponse = functionArguments.evaluated_news;
+
+  const combined = top5Articles.map((article, i) => {
+    return {
+      ...article,
+      sentiment: aiArgumentResponse[i]?.sentiment,
+      summary: aiArgumentResponse[i]?.summary,
+    };
+  }) as AnalyzedNewsArticle[];
+
+  return combined;
 };
