@@ -1,0 +1,36 @@
+[
+  {
+    "function_id": "analyze_news",
+    "system_message": "Given JSON objects about news articles with their links. Open the links, then evaluate each of their sentiments using an integer between 0-10.",
+    "function_object": {
+      "type": "function",
+      "function": {
+        "name": "evaluate_news",
+        "description": "Evaluates and formats the news for use in the frontend.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "evaluated_news": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "sentiment": {
+                    "type": "integer",
+                    "description": "The sentiment score of the given article. From a scale of 0-10 in the public point of views. 0 being incredibly negative for the brand to analyze, while 10 being incredibly postive for the brand to analyze."
+                  },
+                  "summary": {
+                    "type": "string",
+                    "description": "A short summary of the given article. About 50-75 words."
+                  }
+                },
+                "required": ["sentiment", "summary"]
+              }
+            }
+          },
+          "required": ["evaluated_news"]
+        }
+      }
+    }
+  }
+]

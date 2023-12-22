@@ -1,3 +1,4 @@
+import { ChatCompletionTool } from "openai/resources";
 import { curatorFunctions, supportedIndustries } from "./constants";
 
 export type Period = 7 | 30 | 120;
@@ -165,4 +166,19 @@ export type News = {
   articleLink: string;
   guid: string;
   publishedDate: string;
+};
+
+export type OpenaiAnalyzeNewsResponse = {
+  evaluated_news: EvaluatedNews[];
+};
+
+export type EvaluatedNews = {
+  sentiment: number;
+  summary: string;
+};
+
+export type OpenaiJSONPrompt = {
+  function_id: string;
+  system_message: string;
+  function_object: ChatCompletionTool | null;
 };

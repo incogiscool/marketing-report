@@ -2,3 +2,6 @@ It is important to note the following:
     - The Google News RSS feed is meant for non-commercial use (from their TOS). This means that we can only temporarily use it and must start using a costly API or aggregator after testing.
     Source: https://www.google.com/intl/en_us/terms_google_news.html
     A free alternative would be: https://newsdata.io/search-news -- OR Brave news 
+
+    - GPT-4 is pretty expensive.
+    Currently news analyzing is taking aprox. $0.05 per 5 articles

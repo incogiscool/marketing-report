@@ -1,3 +1,4 @@
+import { ChatCompletionCreateParamsBase } from "openai/resources/chat/completions";
 import { getReigonCode } from "./lib/tiktok-hashtags/fn/getReigonCode";
 import { Industry, Period, ResultAmount } from "./lib/types";
 
@@ -18,3 +19,5 @@ export const period: Period = 120;
 export const resultAmount: ResultAmount = 20;
 //Keyword for searching up hashtags with a certain keyword
 export const keyword: string | null = null;
+
+export const openaiModel: ChatCompletionCreateParamsBase["model"] = "gpt-4";
