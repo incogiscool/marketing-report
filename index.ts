@@ -5,29 +5,33 @@ import { getGoogleNewsRSSData } from "./lib/news/google-news-rss";
 import { analyzeTop5Articles } from "./lib/openai/fn/analyzeTop5Articles";
 
 (async () => {
-  // const hashtags = await scrapeTikTokHashtags();
-  // console.log(hashtags);
+  const brand = "apple";
+  const hashtags = await scrapeTikTokHashtags(
+    "United Arab Emirates",
+    "News & Entertainment",
+    brand,
+    20,
+    30,
+    "./country-codes.json"
+  );
 
-  // const res = (await getInstagramHashtagPosts("mcdonalds")).posts.splice(0, 10);
-  // const res2 = (await getInstagramHashtagPosts("starbucks")).posts.splice(
-  //   0,
-  //   10
-  // );
+  console.log(hashtags);
 
-  // const data = res.concat(res2);
+  // const res = (await getInstagramHashtagPosts(brand)).posts.splice(0, 10);
 
-  // for (let i = 0; i < data.length; i++) {
-  //   const post = data[i];
+  // for (let i = 0; i < res.length; i++) {
+  //   const post = res[i];
 
   //   const dataType = post.has_image ? "image" : post.has_video ? "video" : null;
 
-  //   console.log(post.text);
+  //   console.log({
+  //     text: post.text,
+  //     type: dataType,
+  //   });
   // }
 
-  const brand = "apple";
+  // const news = await getGoogleNewsRSSData(brand);
+  // const aiRes = await analyzeTop5Articles(news, brand, "./openai_prompts.json");
 
-  const news = await getGoogleNewsRSSData(brand);
-  const aiRes = await analyzeTop5Articles(news, brand, "./openai_prompts.json");
-
-  console.log(aiRes);
+  // console.log(aiRes);
 })();

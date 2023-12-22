@@ -1,19 +1,26 @@
 import puppeteer, { Browser } from "puppeteer";
-import {
-  tiktokPageLink,
-  period,
-  resultAmount,
-  keyword,
-  reigon,
-  industry,
-} from "../../config";
 import { waitForInterceptedRequest } from "./fn/waitForInterceptedRequest";
 import { createRequestInterceptionEvent } from "./fn/createRequestInterceptionEvent";
 import { getReigonCode } from "./fn/getReigonCode";
 import { getIndustryCode } from "./fn/getIndustryCode";
+import { Industry, Period, ResultAmount } from "../types";
+import { getTiktokPageLink } from "./fn/getTiktokPageLink";
 
-export const scrapeTikTokHashtags = async () => {
+//Period of time for the results (days)
+//Amount of results - 3 or 20
+//Keyword for searching up hashtags with a certain keyword
+//Reigon of the results (Any reigon on the TikTok hashtag search website)
+//Industry - Null for all industries
+export const scrapeTikTokHashtags = async (
+  reigon: string,
+  industry: Industry | null,
+  keyword: string | null,
+  resultAmount: ResultAmount,
+  period: Period,
+  pathToCountryCodes: string
+) => {
   let browser: Browser | null = null;
+  const tiktokPageLink = getTiktokPageLink(reigon, pathToCountryCodes);
 
   try {
     browser = await puppeteer.launch({
