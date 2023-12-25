@@ -1,16 +1,11 @@
-import {
-  ChatCompletionMessageParam,
-  ChatCompletionTool,
-} from "openai/resources";
+import { ChatCompletionMessageParam } from "openai/resources";
 import { openai } from "..";
 import {
   AnalyzedNewsArticle,
   NewsArticle,
   OpenaiAnalyzeNewsResponse,
-  OpenaiJSONPrompt,
 } from "../../types";
-import { openaiModel } from "../../../config";
-import fs from "fs";
+import { openaiTextModel } from "../../../config";
 import { getJSONPrompt } from "./getJSONPrompt";
 
 export const analyzeTop5Articles = async (
@@ -44,7 +39,7 @@ export const analyzeTop5Articles = async (
     messages,
     temperature: 0,
     tools: [newsPromptsObject?.function_object!],
-    model: openaiModel,
+    model: openaiTextModel,
     tool_choice: {
       type: "function",
       function: {
@@ -54,7 +49,6 @@ export const analyzeTop5Articles = async (
   });
 
   const responseMessage = msg.choices[0].message;
-  console.log(msg.usage);
   if (!responseMessage.tool_calls) throw new Error("Invalid output by AI.");
 
   const functionArguments = JSON.parse(

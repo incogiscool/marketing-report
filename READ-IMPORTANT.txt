@@ -5,3 +5,5 @@ It is important to note the following:
 
     - GPT-4 is pretty expensive.
     Currently news analyzing is taking aprox. $0.05 per 5 articles
+
+    - Seems like we need to pay for Curator.io

@@ -32,5 +32,10 @@
         }
       }
     }
+  },
+  {
+    "function_id": "analyze_top_5_posts_image",
+    "system_message": "Explain what is going on in this image in 50-75 words.",
+    "function_object": null
   }
 ]
