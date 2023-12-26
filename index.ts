@@ -8,25 +8,30 @@ import { analyzeTop5CuratorPosts } from "./lib/openai/fn/analyzeTop5CuratorPosts
 
 (async () => {
   const brand = "starbucks";
-  // const hashtags = await scrapeTikTokHashtags(
-  //   "United Arab Emirates",
-  //   "News & Entertainment",
-  //   brand,
-  //   20,
-  //   30,
-  //   "./country-codes.json"
-  // );
-  // console.log(hashtags);
-
-  const res = await getInstagramHashtagPosts(brand);
-
-  const analyzePostsRes = await analyzeTop5CuratorPosts(
-    res.posts,
-    "./openai_prompts.json",
-    brand
+  const hashtags = await scrapeTikTokHashtags(
+    "United Arab Emirates",
+    "News & Entertainment",
+    null,
+    //I guess TikTok deprecated the keyword search
+    // brand,
+    20,
+    30,
+    "./country-codes.json"
   );
 
-  console.log(analyzePostsRes);
+  console.log(hashtags);
+
+  // const res = await getInstagramHashtagPosts(brand);
+
+  // const analyzePostsRes = await analyzeTop5CuratorPosts(
+  //   res.posts,
+  //   "./openai_prompts.json",
+  //   brand
+  // );
+
+  // console.log(analyzePostsRes);
+
+  // const news = await getGoogleNewsRSSData(brand);
 
   // const aiRes = await analyzeTop5Articles(news, brand, "./openai_prompts.json");
   // console.log(aiRes);
