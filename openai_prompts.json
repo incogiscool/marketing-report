@@ -37,5 +37,29 @@
     "function_id": "analyze_top_5_posts_image",
     "system_message": "Explain what is going on in this image in 50-75 words.",
     "function_object": null
+  },
+  {
+    "function_id": "analyze_top_5_posts",
+    "system_message": "Given a description of an image and the description of the social media post, evaluate each of their sentiments using an integer between 0-10.",
+    "function_object": {
+      "type": "function",
+      "function": {
+        "name": "analyze_top_5_posts",
+        "description": "Evaluates and formats the news for use in the frontend.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "sentiments": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "description": "The sentiment score of the given post. From a scale of 0-10 in the public point of views. 0 being incredibly negative for the brand to analyze, while 10 being incredibly postive for the brand to analyze."
+              }
+            }
+          },
+          "required": ["sentiments"]
+        }
+      }
+    }
   }
 ]

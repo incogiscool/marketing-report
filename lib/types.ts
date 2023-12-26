@@ -187,3 +187,8 @@ export type AnalyzedNewsArticle = {
   sentiment: number;
   summary: string;
 } & NewsArticle;
+
+export type AnalyzedPost = {
+  sentiment: number;
+  image_description: string | null;
+} & CuratorPost;
